@@ -1,14 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { createRoot } from 'react-dom/client';
+// import { AuthProvider } from './contexts/AuthProvider';
+import { BrowserRouter } from 'react-router-dom';
+import { AuthContextProvider } from './Components/context/AuthContext';
+const container = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(
-  <React.StrictMode>
+<AuthContextProvider>
+    <BrowserRouter>
     <App />
-  </React.StrictMode>
+  </BrowserRouter>
+  </AuthContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
